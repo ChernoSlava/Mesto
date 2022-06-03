@@ -1,12 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мesto</title>
+    <meta name="keywords" content="html, css, JavaScript" />
+    <meta name="author" content="Черногоров Вячеслав" />
+    <meta name="description" content="Mesto" />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  
+  <body class="page">
+    <div class="popup popup_opened">
+        <div class="popup__container">
+            <p class="popup__title">Редактировать профиль</p><button type="button" class="popup__close-icon"></button>
+            <input type="text" class="popup__name-input" name="name" value="Ататюрк М.К.">
+            <input type="text" class="popup__job-input" name="job" value="Первый президент Турции">
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+        </div>
+    </div>
+    <header class="header">
+        <img class="header__logo" alt="Логотип социальной сети Место, с подписью Россия" src="./images/logo.svg">
+        <div class="header__line"></div>
+    </header>
+    <section class="profile">
+        <div class="avatar"></div>
+        <div class="profile-info">
+            <h2 class="profile-info__title">Ататюрк М.К. <button type="button" class="profile-info__button">
+                <img src="./images/Profile__Edit Button.svg" alt="Кнопка редактирования">
+            </button></h2>
+            <p class="profile-info__subtitle">Первый президент Турции</p>  
+        </div>
+        <Button type="button" class="add-button" >
+        </Button>
+    </section>
+
+    <section class="elements">
+        <div class="element">
+            <div class="element__rectangle">
+                <img class="element__image" src="./images/1Bosforski.most.jpg" alt="Босфорский мост">
+                <div class="elements__title">
+                    <p class="element__title">Мост</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>
+            </div>
+        </div>
+        <div class="element">
+            <div class="element__rectangle">
+                
+                <img class="element__image" src="./images/2Devicha.bashna.jpg" alt="Девичья башня">
+                <div class="elements__title">
+                    <p class="element__title">Башня</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>  
+            </div>
+        </div>
+        <div class="element">
+            <div class="element__rectangle">
+                
+                <img class="element__image" src="./images/3Krasiva.cami.jpg" alt="Мечеть в Стамбуле">
+                <div class="elements__title">
+                    <p class="element__title">Мечеть</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>
+            </div>
+        </div>
+        <div class="element">
+            <div class="element__rectangle">
+                <img class="element__image" src="./images/4Terma.pamukkale.jpg" alt="Горячии источники">
+                <div class="elements__title">
+                    <p class="element__title">Источники</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>
+            </div>
+        </div>
+        <div class="element">
+            <div class="element__rectangle">
+                <img class="element__image" src="./images/5Kappadokia.jpg" alt="Воздушные шары в Каппадокии">
+                <div class="elements__title">
+                    <p class="element__title">Воздушые шары</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>
+            </div>
+        </div>
+        <div class="element">
+            <div class="element__rectangle">
+                <img class="element__image" src="./images/6Terma.pamukkale.jpg" alt="Термальные источники Памуккале">
+                <div class="elements__title">
+                    <p class="element__title">Бассейны</p>
+                    <input id="heart" type="checkbox"class="invisible-checkbox">
+                    <label for="heart" class="element__heart"></label>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Turkey</p>
+    </footer>
+    <script src="../mesto/script/script.js"></script>
+  </body>
 </html>

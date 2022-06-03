@@ -1,0 +1,15 @@
+.avatar{
+    background: url(../../images/Profile__image.jpg) no-repeat -30px 0;
+    width: 120.75px;
+    height: 120.5px;
+    border-radius: 50%;
+    background-size: auto 127px;
+    
+}
+
+
+@media screen and (max-width: 600px) {
+  .avatar {
+    justify-self: center;
+  }
+}
