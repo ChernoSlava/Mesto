@@ -1,15 +1,14 @@
 .add-button {
-    align-self: baseline;
-    width: 150px;
-    min-height: 50px;
-    background-color: transparent;
-    grid-column-start: -1;
-    background-image: url(../../images/Vector.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    outline: 2px solid #fff;
-    align-self: center;
-    
+  align-self: baseline;
+  width: 150px;
+  min-height: 50px;
+  background-color: transparent;
+  grid-column-start: -1;
+  background-image: url(../../images/Vector.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: 2px solid #fff;
+  align-self: center;
 }
 
 .add-button:hover {
@@ -24,7 +23,7 @@
     grid-row-start: 2;
     justify-self: end;
   }
-} 
+}
 
 @media screen and (max-width: 600px) {
   .add-button {
@@ -33,6 +32,4 @@
     grid-column-start: 1;
     grid-row-start: 3;
   }
-} 
-
-  
+}
