@@ -1,14 +1,15 @@
 .profile-info {
-    display: flex;
-    flex-direction: column;
-    max-width: 336px;
-    min-height: 73px;
-    padding-left: 30px;
-    align-self: center;
+  display: grid;
+  grid-template-columns: 294px 24px;
+  max-width: 336px;
+  min-height: 73px;
+  padding-left: 30px;
+  align-self: center;
 }
 
 @media screen and (max-width: 600px) {
   .profile-info {
+    grid-template-columns: 189px 18px;
     padding-left: 0;
     justify-self: center;
     padding-top: 26px;

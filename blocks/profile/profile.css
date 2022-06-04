@@ -1,17 +1,16 @@
 .profile {
-    padding-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr 336px 2fr;
-    max-width: 880px;
-    min-height: 120px;
-    padding-left: 16%;
-    padding-right: 16%;
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 336px 2fr;
+  max-width: 880px;
+  min-height: 120px;
+  padding-left: 16%;
+  padding-right: 16%;
 }
 
 @media screen and (max-width: 890px) {
   .profile {
     grid-template-columns: 1fr 336px;
-    
   }
 }
 
@@ -22,5 +21,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-

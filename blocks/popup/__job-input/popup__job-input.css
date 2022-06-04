@@ -1,15 +1,15 @@
 .popup__job-input {
-    margin-top: 30px;
-    margin-left: 36px;
-    max-width: 358px;
-    min-height: 27px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-    border: 0;
-    border-bottom: 1px solid #000000;
+  margin-top: 30px;
+  margin-left: 36px;
+  max-width: 358px;
+  min-height: 27px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  border: 0;
+  border-bottom: 1px solid #000000;
 }
 
 @media screen and (max-width: 600px) {

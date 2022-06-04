@@ -1,14 +1,13 @@
 .elements {
-    max-width: 69.8%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 20px;
-    column-gap: 17px;
-    padding-top: 50px;
-    padding-left: 15.6%;
-    padding-right: 15.6%;
-    justify-content: center;
-
+  max-width: 69.8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 17px;
+  padding-top: 50px;
+  padding-left: 15.6%;
+  padding-right: 15.6%;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1024px) {
@@ -17,8 +16,6 @@
     justify-items: center;
   }
 }
-
-
 
 @media screen and (max-width: 600px) {
   .elements {
