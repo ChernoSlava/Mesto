@@ -1,4 +1,4 @@
-.profile-info__button {
+.profile__button {
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -7,7 +7,7 @@
   align-self: center;
 }
 
-.profile-info__button:hover {
+.profile__button:hover {
   opacity: 0.8;
   cursor: pointer;
 }

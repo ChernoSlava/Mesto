@@ -1,16 +1,18 @@
 @import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
-@import url(../vendor/fonts/inter.css);
+@import url(../vendor/font.css);
 
 @import url(../blocks/popup/popup.css);
 
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
-@import url(../blocks/popup/__name-input/popup__name-input.css);
-@import url(../blocks/popup/__job-input/popup__job-input.css);
+
+@import url(../blocks/popup/__field/_type_name/popup__field_type_name.css);
+@import url(../blocks/popup/__field/_type_job/popup__field_type_job.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 
 @import url(../blocks/header/header.css);
@@ -18,17 +20,16 @@
 @import url(../blocks/header/__line/header__line.css);
 
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile-info/profile-info.css);
-@import url(../blocks/avatar/avatar.css);
-@import url(../blocks/profile-info/__title/profile-info__title.css);
-@import url(../blocks/profile-info/__subtitle/profile-info__subtitle.css);
-@import url(../blocks/profile-info/__button/profile-info__button.css);
-@import url(../blocks/add-button/add-button.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__profile-info/profile__profile-info.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/elements/__title/elements__title.css);
 @import url(../blocks/element/element.css);
-@import url(../blocks/element/__rectangle/element__rectangle.css);
+@import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__heart/element__heart.css);

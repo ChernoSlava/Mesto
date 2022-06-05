@@ -1,22 +1,22 @@
-.add-button {
+.profile__add-button {
   width: 150px;
   min-height: 50px;
   background-color: transparent;
   grid-column-start: -1;
-  background-image: url(../../images/Vector.svg);
+  background-image: url(../../../images/Vector.svg);
   background-repeat: no-repeat;
   background-position: center;
   outline: 2px solid #fff;
   align-self: center;
 }
 
-.add-button:hover {
+.profile__add-button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 950px) {
-  .add-button {
+  .profile__add-button {
     padding-top: 36px;
     grid-column-start: 2;
     grid-row-start: 2;
@@ -25,7 +25,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .add-button {
+  .profile__add-button {
     justify-self: center;
     width: 282px;
     grid-column-start: 1;

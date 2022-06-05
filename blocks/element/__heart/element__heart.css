@@ -2,6 +2,10 @@
   width: 22px;
   height: 19px;
   background-image: url(../../../images/__heart.svg);
+  border: 0;
+  background-color: transparent;
+  align-self: center;
+  overflow: visible;
 }
 
 .element__heart:hover {
@@ -13,10 +17,3 @@
   background-image: url(../../../images/Union.svg);
 }
 
-.invisible-checkbox {
-  position: absolute;
-  width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
-  height: 1px;
-  overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
-  clip: rect(0 0 0 0);
-}

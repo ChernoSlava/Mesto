@@ -3,13 +3,12 @@
   max-width: 880px;
   min-height: 74px;
   display: flex;
+  margin: auto;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 15.6%;
-  padding-right: 15.6%;
 }
 
-@media screen and (max-width: 345px) {
+@media screen and (max-width: 720px) {
   .header {
     padding-left: 0;
     padding-right: 0;

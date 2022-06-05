@@ -17,8 +17,16 @@
         <p class="popup__title">Редактировать профиль</p>
         <button type="button" class="popup__close-icon"></button>
         <form class="popup__form">
-          <input type="text" class="popup__name-input" />
-          <input type="text" class="popup__job-input" />
+          <input
+            type="text"
+            name="name"
+            class="popup__field popup__field_type_name"
+          />
+          <input
+            type="text"
+            name="job"
+            class="popup__field popup__field_type_job"
+          />
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
       </div>
@@ -31,109 +39,91 @@
       />
       <div class="header__line"></div>
     </header>
-    <div>
+    <main>
       <section class="profile">
-        <div class="avatar"></div>
-        <div class="profile-info">
-          <h2 class="profile-info__title">Ататюрк М.К.</h2>
-          <button type="button" class="profile-info__button">
+        <div class="profile__avatar"></div>
+        <div class="profile__profile-info">
+          <h1 class="profile__title">Ататюрк М.К.</h1>
+          <button type="button" class="profile__button">
             <img
               src="./images/Profile__Edit-Button.svg"
               alt="Кнопка редактирования"
             />
           </button>
-          <p class="profile-info__subtitle">Первый президент Турции</p>
+          <p class="profile__subtitle">Первый президент Турции</p>
         </div>
-        <button type="button" class="add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
 
-      <section class="elements">
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/1Bosforski.most.jpg"
-              alt="Босфорский мост"
-            />
-            <div class="elements__title">
-              <p class="element__title">Мост</p>
-              <input id="heart1" type="checkbox" class="invisible-checkbox" />
-              <label for="heart1" class="element__heart"></label>
-            </div>
+      <ul class="elements">
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/1Bosforski.most.jpg"
+            alt="Босфорский мост"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Мост</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/2Devicha.bashna.jpg"
-              alt="Девичья башня"
-            />
-            <div class="elements__title">
-              <p class="element__title">Башня</p>
-              <input id="heart2" type="checkbox" class="invisible-checkbox" />
-              <label for="heart2" class="element__heart"></label>
-            </div>
+        </li>
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/2Devicha.bashna.jpg"
+            alt="Девичья башня"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Башня</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/3Krasiva.cami.jpg"
-              alt="Мечеть в Стамбуле"
-            />
-            <div class="elements__title">
-              <p class="element__title">Мечеть</p>
-              <input id="heart3" type="checkbox" class="invisible-checkbox" />
-              <label for="heart3" class="element__heart"></label>
-            </div>
+        </li>
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/3Krasiva.cami.jpg"
+            alt="Мечеть в Стамбуле"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Мечеть</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/4Terma.pamukkale.jpg"
-              alt="Горячии источники"
-            />
-            <div class="elements__title">
-              <p class="element__title">Источники</p>
-              <input id="heart4" type="checkbox" class="invisible-checkbox" />
-              <label for="heart4" class="element__heart"></label>
-            </div>
+        </li>
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/4Terma.pamukkale.jpg"
+            alt="Горячии источники"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Источники</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/5Kappadokia.jpg"
-              alt="Воздушные шары в Каппадокии"
-            />
-            <div class="elements__title">
-              <p class="element__title">Воздушые шары</p>
-              <input id="heart5" type="checkbox" class="invisible-checkbox" />
-              <label for="heart5" class="element__heart"></label>
-            </div>
+        </li>
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/5Kappadokia.jpg"
+            alt="Воздушные шары в Каппадокии"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Воздушые шары</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-        <div class="element">
-          <div class="element__rectangle">
-            <img
-              class="element__image"
-              src="./images/6Terma.pamukkale.jpg"
-              alt="Термальные источники Памуккале"
-            />
-            <div class="elements__title">
-              <p class="element__title">Бассейны</p>
-              <input id="heart6" type="checkbox" class="invisible-checkbox" />
-              <label for="heart6" class="element__heart"></label>
-            </div>
+        </li>
+        <li class="element">
+          <img
+            class="element__image"
+            src="./images/6Terma.pamukkale.jpg"
+            alt="Термальные источники Памуккале"
+          />
+          <div class="element__info">
+            <h2 class="element__title">Бассейны</h2>
+            <input type="button" name="heart" class="element__heart" value=" ">
           </div>
-        </div>
-      </section>
-    </div>
+        </li>
+      </ul>
+    </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Turkey</p>
     </footer>
