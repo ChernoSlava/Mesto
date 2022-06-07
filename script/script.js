@@ -17,13 +17,13 @@ popup_open.addEventListener("click", function (event) {
   popup.classList.add("popup_opened");
 });
 
-function myFunction() {
+function closePopup() {
   popup.classList.remove("popup_opened");
 }
 
 popup_close.addEventListener("click", function (event) {
   // Создаю функцию, которая убирает модификатор, закрывает popup и возвращает значения в формах к исходному значению
-  myFunction();
+  closePopup();
 });
 
 function formSubmitHandler(evt) {
@@ -32,7 +32,7 @@ function formSubmitHandler(evt) {
   Name.textContent = nameInput.value;
   job.textContent = jobInput.value;
   // Выберите элементы, куда должны быть вставлены значения полей
-  myFunction();
+  closePopup();
   // Вставьте новые значения с помощью textContent
 }
 // Прикрепляем обработчик к форме:

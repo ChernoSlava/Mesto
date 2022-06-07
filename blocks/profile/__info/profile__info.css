@@ -1,4 +1,4 @@
-.profile__profile-info {
+.profile__info {
   display: grid;
   grid-template-columns: 294px 24px;
   max-width: 336px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .profile__profile-info {
+  .profile__info {
     grid-template-columns: 189px 18px;
     padding-left: 0;
     justify-self: center;
