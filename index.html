@@ -12,11 +12,11 @@
   </head>
 
   <body class="page">
-    <div class="popup">
+    <div class="popup profile-popup">
       <div class="popup__container">
         <p class="popup__title">Редактировать профиль</p>
         <button type="button" class="popup__close-icon"></button>
-        <form class="popup__form">
+        <form class="popup__form profile-form">
           <input
             type="text"
             name="name"
@@ -31,11 +31,11 @@
         </form>
       </div>
     </div>
-    <div class="popup">
+    <div class="popup card-popup">
       <div class="popup__container">
         <p class="popup__title">Новое место</p>
         <button type="button" class="popup__close-icon"></button>
-        <form class="popup__form">
+        <form class="popup__form card-form">
           <input
             type="text"
             name="title"
@@ -52,7 +52,7 @@
         </form>
       </div>
     </div>
-    <div class="popup" id="popupCardView">
+    <div class="popup image-popup" id="popupCardView">
       <div class="popup__image-container">
         <img
           src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -100,7 +100,11 @@
     <template id="image">
       <li class="element">
         <button type="button" class="element__delete-button"></button>
-        <img class="element__image" src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
+        <img
+          class="element__image"
+          src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          alt="Хмю, опять что-то придумал?"
+        />
         <div class="element__info">
           <h2 class="element__title">В путешествие?</h2>
           <button
