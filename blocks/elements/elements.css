@@ -1,6 +1,6 @@
 .elements {
   margin: 0;
-  max-width: 69.8%;
+  max-width: 68.8%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 20px;
