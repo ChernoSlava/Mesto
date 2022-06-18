@@ -21,33 +21,32 @@ let userName = document.querySelector(".profile__title"); // Назначаю п
 let job = document.querySelector(".profile__subtitle");
 const initialCards = [
   {
-    name: "Через воду?",
-    link: "https://images.pexels.com/photos/1836580/pexels-photo-1836580.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    name: "По мосту?",
+    link: "https://images.unsplash.com/photo-1647883635719-8debb528c5fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHR1cmtleSUyMGJyaWRnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
-    name: "Станцуем?",
-    link: "https://images.pexels.com/photos/10991590/pexels-photo-10991590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    name: "Погружаемся?",
+    link: "https://images.unsplash.com/photo-1596814499955-ca23f3679fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fHR1cmtleSUyMGRlcnZpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
   },
   {
-    name: "На птичий базар?",
-    link: "https://images.pexels.com/photos/10206616/pexels-photo-10206616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    name: "На живца?",
+    link: "https://images.unsplash.com/photo-1634110985794-433ae37c34e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM1fHxpc3RhbmJ1bCUyMGJyaWRnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "Пройдёмся?",
-    link: "https://images.pexels.com/photos/7529392/pexels-photo-7529392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    link: "https://images.unsplash.com/photo-1606580523068-a0a7918c6a24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGlzdGFuYnVsJTIwYnJpZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
-    name: "На трамвайчик?",
-    link: "https://images.pexels.com/photos/11096872/pexels-photo-11096872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    name: "На шопинг?",
+    link: "https://images.unsplash.com/photo-1629212094410-e5bd12fe49c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGlzdGFuYnVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "Мясца?",
-    link: "https://images.pexels.com/photos/7317525/pexels-photo-7317525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    link: "https://images.unsplash.com/photo-1596995804697-27d11d43652e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGZvb2QlMjBrZWJhYnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
 ];
 
-alert('Если вы открываете проект из России, для загрузки картинок включите vpn');
-console.log('Если вы открываете проект из России, для загрузки картинок включите vpn')
+console.log('Если вы открываете проект из России, для загрузки картинок может понадобиться включить vpn')
 //СОЗДАТЬ КАРТОЧКИ--------------------------------------------------------------------------------------
 function createCard(item) {
   //функция создания карточки
