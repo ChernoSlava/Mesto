@@ -12,6 +12,7 @@ const profilePopup = document.querySelector(".profile-popup");
 const cardPopup = document.querySelector(".card-popup");
 const imagePopup = document.querySelector(".image-popup");
 
+const buttons = page.querySelectorAll(".popup__submit-button");
 const imageArea = document.querySelector(".elements");
 const nameInput = document.querySelector(".popup__field_type_name");
 const jobInput = document.querySelector(".popup__field_type_job"); // Назначаю переменную и вибираю откуда
@@ -19,36 +20,7 @@ const title = document.querySelector(".popup__field_type_title");
 const link = document.querySelector(".popup__field_type_link");
 const userName = document.querySelector(".profile__title"); // Назначаю переменную userName и job
 const job = document.querySelector(".profile__subtitle");
-const initialCards = [
-  {
-    name: "По мосту?",
-    link: "https://images.unsplash.com/photo-1647883635719-8debb528c5fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHR1cmtleSUyMGJyaWRnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "Погружаемся?",
-    link: "https://images.unsplash.com/photo-1596814499955-ca23f3679fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fHR1cmtleSUyMGRlcnZpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "На живца?",
-    link: "https://images.unsplash.com/photo-1634110985794-433ae37c34e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM1fHxpc3RhbmJ1bCUyMGJyaWRnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "Пройдёмся?",
-    link: "https://images.unsplash.com/photo-1606580523068-a0a7918c6a24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGlzdGFuYnVsJTIwYnJpZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "На шопинг?",
-    link: "https://images.unsplash.com/photo-1629212094410-e5bd12fe49c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGlzdGFuYnVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "Мясца?",
-    link: "https://images.unsplash.com/photo-1596995804697-27d11d43652e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGZvb2QlMjBrZWJhYnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  },
-];
-
-console.log(
-  "Если вы открываете проект из России, для загрузки картинок может понадобиться включить vpn"
-);
+const imageTemplate = document.querySelector("#image");
 
 const config = {
   formSelector: ".popup__form",
@@ -63,7 +35,7 @@ const config = {
 //СОЗДАТЬ КАРТОЧКИ--------------------------------------------------------------------------------------
 function createCard(item) {
   //функция создания карточки
-  const imageTemplate = document.querySelector("#image");
+
   const elementCard = imageTemplate.content.cloneNode(true);
   const elementImage = elementCard.querySelector(".element__image");
   const elementTitle = elementCard.querySelector(".element__title");
@@ -108,6 +80,11 @@ function deleteCard(item) {
 function openPopup(popup) {
   // создаём функцию открытия попапа
   popup.classList.add("popup_opened");
+  page.addEventListener("keyup", closePopupPushEsc);
+  buttons.forEach((buttonElement) => {
+    buttonElement.setAttribute(config.inactiveButtonClass, true);
+  }); //кнопка submit включается, только после валидации
+  removeWarning(); //убирает прошлые ошибки при открытии
 }
 
 profileOpenBtn.addEventListener("click", function (event) {
@@ -125,7 +102,6 @@ popupOpenAddBtn.addEventListener("click", function (event) {
 //ПРОСМОТР ОПЕРЕДЕЛЁННОЙ КАРТОЧКИ--------------------------------------------------------------------------------------
 function handleCardClick(event) {
   //функция увеличивает фотки = handleCardClick
-  popupImage.src = "";
   openPopup(imagePopup); //Открывает третий попап
   popupTitle.textContent = event.target.alt;
   popupImage.src = event.target.src;
@@ -137,22 +113,47 @@ function handleCardClick(event) {
 function closePopup(popup) {
   //функция закрытия общая
   popup.classList.remove("popup_opened");
+  page.removeEventListener("keyup", closePopupPushEsc);
 }
+
+function removeWarning() {
+  //убирает ошибки
+  const errorRedLine = page.querySelectorAll(".popup__field_type_error");
+  const errorText = page.querySelectorAll(".popup__field-error_active");
+  errorRedLine.forEach((line) => {
+    line.classList.remove(config.inputErrorClass);
+  });
+  errorText.forEach((text) => {
+    text.classList.remove(config.errorClass);
+  });
+}
+
 closeButtons.forEach((button) => {
   //закрытие для всех крестиков
   const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
+  button.addEventListener("click", () => {
+    closePopup(popup);
+  });
 });
 
-page.addEventListener("keyup", (evt) => {
+function closePopupPushEsc(evt) {
   // при нажатии на esc popup закрывается
   if (evt.key === "Escape") {
     popups.forEach((popup) => {
       closePopup(popup);
     });
   }
+}
+
+popups.forEach((click) => {
+  click.addEventListener("mousedown", (evt) => {
+    if ((evt.target = "popup_opened")) {
+      closePopup(evt.target);
+    }
+  });
 });
 
+/*
 popups.forEach((e) => {
   e.addEventListener("mousedown", () => {
     popups.forEach((e) => {
@@ -163,16 +164,7 @@ popups.forEach((e) => {
     evt.stopPropagation();
   });
 });
-
-/*
-popups.forEach((evt) => {
-  const popup = evt.target.closest(".popup");
-  popup.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup(popup);
-  }
-});
-});*/
+*/
 
 // ИЗМЕНЕНИЕ ИНФЫ О СЕБЕ--------------------------------------------------------------------------------------
 
