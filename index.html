@@ -13,47 +13,81 @@
 
   <body class="page">
     <div class="popup profile-popup">
-      <div class="popup__container">
+      <div class="popup__container container">
         <p class="popup__title">Редактировать профиль</p>
         <button type="button" class="popup__close-icon"></button>
-        <form class="popup__form profile-form">
-          <input
-            type="text"
-            name="name"
-            class="popup__field popup__field_type_name"
-          />
-          <input
-            type="text"
-            name="job"
-            class="popup__field popup__field_type_job"
-          />
-          <button type="submit" class="popup__submit-button">Сохранить</button>
+        <form class="popup__form profile-form" novalidate>
+          <fieldset class="popup__set">
+            <input
+              id="name"
+              type="text"
+              name="name"
+              class="popup__field popup__field_type_name"
+              placeholder="Ваше имя"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="popup__field-error popup__field-error_field_name"
+              >Необходимо заполнить данное поле</span
+            >
+            <input
+              id="job"
+              type="text"
+              name="job"
+              class="popup__field popup__field_type_job"
+              placeholder="Ваша работа"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="popup__field-error popup__field-error_field_job"
+              >Необходимо заполнить данное поле</span
+            >
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
+          </fieldset>
         </form>
       </div>
     </div>
     <div class="popup card-popup">
-      <div class="popup__container">
+      <div class="popup__container container">
         <p class="popup__title">Новое место</p>
         <button type="button" class="popup__close-icon"></button>
-        <form class="popup__form card-form">
-          <input
-            type="text"
-            name="title"
-            class="popup__field popup__field_type_title"
-            placeholder="Название"
-          />
-          <input
-            type="text"
-            name="link"
-            class="popup__field popup__field_type_link"
-            placeholder="Ссылка на картинку"
-          />
-          <button type="submit" class="popup__submit-button">Создать</button>
+        <form class="popup__form card-form" novalidate>
+          <fieldset class="popup__set">
+            <input
+              id="title"
+              type="text"
+              name="title"
+              class="popup__field popup__field_type_title"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="popup__field-error popup__field-error_field_title"
+              >Необходимо заполнить данное поле</span
+            >
+            <input
+              id="url"
+              type="url"
+              name="link"
+              class="popup__field popup__field_type_link"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__field-error popup__field-error_field_link"
+              >Необходимо заполнить данное поле</span
+            >
+            <button type="submit" class="popup__submit-button">Создать</button>
+          </fieldset>
         </form>
       </div>
     </div>
     <div class="popup image-popup" id="popupCardView">
-      <div class="popup__image-container">
+      <div class="popup__image-container container">
         <img
           src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           class="popup__image"
@@ -116,6 +150,7 @@
         </div>
       </li>
     </template>
-    <script src="script/script.js"></script>
+    <script src="script/index.js"></script>
+    <script src="script/validate.js"></script>
   </body>
 </html>
