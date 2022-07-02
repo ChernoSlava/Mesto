@@ -81,10 +81,14 @@ function openPopup(popup) {
   // создаём функцию открытия попапа
   popup.classList.add("popup_opened");
   page.addEventListener("keyup", closePopupPushEsc);
-  buttons.forEach((buttonElement) => {
-    buttonElement.setAttribute(config.inactiveButtonClass, true);
-  }); //кнопка submit включается, только после валидации
-  removeWarning(); //убирает прошлые ошибки при открытии
+}
+
+function disableSubmitButton(popup) {
+  const button = popup.querySelector(".popup__submit-button");
+
+  if (button) {
+    button.setAttribute(config.inactiveButtonClass, true);
+  }
 }
 
 profileOpenBtn.addEventListener("click", function (event) {
@@ -92,11 +96,13 @@ profileOpenBtn.addEventListener("click", function (event) {
   nameInput.value = userName.textContent; // Говорю, что значение nameInput and jobInput = тому, что вптсано в title and subtitle
   jobInput.value = job.textContent; // Создаю функцию, которая добавляет модификатор и включает popup
   openPopup(profilePopup); //функция открыть (здесь имя первого попапа )
+  disableSubmitButton(profilePopup);
 });
 
 popupOpenAddBtn.addEventListener("click", function (event) {
   //открывает второй попап
   openPopup(cardPopup); //функция открыть (здесь имя второго попапа )
+  disableSubmitButton(cardPopup);
 });
 
 //ПРОСМОТР ОПЕРЕДЕЛЁННОЙ КАРТОЧКИ--------------------------------------------------------------------------------------
@@ -116,16 +122,11 @@ function closePopup(popup) {
   page.removeEventListener("keyup", closePopupPushEsc);
 }
 
-function removeWarning() {
-  //убирает ошибки
-  const errorRedLine = page.querySelectorAll(".popup__field_type_error");
-  const errorText = page.querySelectorAll(".popup__field-error_active");
-  errorRedLine.forEach((line) => {
-    line.classList.remove(config.inputErrorClass);
-  });
-  errorText.forEach((text) => {
-    text.classList.remove(config.errorClass);
-  });
+function clearPopupError(popup) {
+  //Частна функция с условием, если нет class-image выполняй
+  if (!popup.querySelector(".popup image-popup")) {
+    clearErrors(popup);
+  }
 }
 
 closeButtons.forEach((button) => {
@@ -133,6 +134,7 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => {
     closePopup(popup);
+    clearPopupError(popup);
   });
 });
 
@@ -141,14 +143,16 @@ function closePopupPushEsc(evt) {
   if (evt.key === "Escape") {
     popups.forEach((popup) => {
       closePopup(popup);
+      clearPopupError(popup);
     });
   }
 }
 
 popups.forEach((click) => {
   click.addEventListener("mousedown", (evt) => {
-    if ((evt.target = "popup_opened")) {
+    if (evt.target.classList.contains("popup_opened")) {
       closePopup(evt.target);
+      clearPopupError(evt.target);
     }
   });
 });
@@ -175,6 +179,7 @@ function handleProfileFormSubmit(evt) {
   userName.textContent = nameInput.value; // Выберите элементы, куда должны быть вставлены значения полей
   job.textContent = jobInput.value; // Вставьте новые значения с помощью textContent
   closePopup(profilePopup);
+  clearPopupError(profilePopup);
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit); // Прикрепляем обработчик к форме:// он будет следить за событием “submit” - «отправка»
 
@@ -192,6 +197,7 @@ function handleCardFormSubmit(evt) {
   imageArea.prepend(elementCard);
   closePopup(cardPopup);
   evt.target.reset();
+  clearPopupError(cardPopup);
 }
 cardForm.addEventListener("submit", handleCardFormSubmit); // Ставлю слушатель на кнопку создания новой карточки
 

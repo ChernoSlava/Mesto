@@ -7,6 +7,15 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   errorElement.classList.add(config.errorClass);
 };
 
+function clearErrors(popup) {
+  //Обущая функция, убирающая ошибки
+  const form = popup.querySelector(config.formSelector);
+
+  popup.querySelectorAll(config.inputSelector).forEach((inputElement) => {
+    hideInputError(form, inputElement);
+  });
+}
+
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(
     `.popup__field-error_field_${inputElement.name}`
