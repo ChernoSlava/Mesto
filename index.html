@@ -44,7 +44,11 @@
             <span class="popup__field-error popup__field-error_field_job"
               >Необходимо заполнить данное поле</span
             >
-            <button type="submit" class="popup__submit-button">
+            <button
+              type="submit"
+              class="popup__submit-button"
+              id="btnEditProfile"
+            >
               Сохранить
             </button>
           </fieldset>
@@ -81,18 +85,20 @@
             <span class="popup__field-error popup__field-error_field_link"
               >Необходимо заполнить данное поле</span
             >
-            <button type="submit" class="popup__submit-button">Создать</button>
+            <button
+              type="submit"
+              class="popup__submit-button"
+              id="btnCreateCard"
+            >
+              Создать
+            </button>
           </fieldset>
         </form>
       </div>
     </div>
     <div class="popup image-popup" id="popupCardView">
       <div class="popup__image-container container">
-        <img
-          src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          class="popup__image"
-          alt="Красота"
-        />
+        <img src="" class="popup__image" alt="Красота" />
         <h2 class="popup__image-title">В путешествие?</h2>
         <button type="button" class="popup__close-icon"></button>
       </div>
@@ -150,8 +156,8 @@
         </div>
       </li>
     </template>
-    <script src="script/cards.js"></script>
-    <script src="script/index.js"></script>
-    <script src="script/validate.js"></script>
+    <script type="module" src="./script/Card.js"></script>
+    <script type="module" src="script/FormValidator.js"></script>
+    <script type="module" src="script/index.js"></script>
   </body>
 </html>
