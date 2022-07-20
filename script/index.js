@@ -1,5 +1,9 @@
 import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import {
+  FormValidator,
+  disableSubmitButton,
+  clearError,
+} from "./FormValidator.js";
 
 const profileOpenBtn = document.querySelector(".profile__button");
 const btnAddCard = document.querySelector(".profile__add-button");
@@ -55,61 +59,32 @@ const initialCards = [
   },
 ];
 
-class CardList {
-  constructor(container, items, template, onCardClick) {
-    this._container =
-      typeof container === "string"
-        ? document.querySelector(container)
-        : container;
-    this._items = items;
-    this._template = template;
-    this._onCardClick = onCardClick;
+const container = document.querySelector(".elements");
+
+const createCard = (item, isAppend = true) => {
+  const card = new Card(item, "#image", handleCardClick);
+  const cardElement = card.generate();
+
+  if (isAppend) {
+    container.append(cardElement);
+  } else {
+    container.prepend(cardElement);
   }
+};
 
-  init() {
-    this._items.forEach((item) => {
-      this._createCard(item);
-    });
-  }
-
-  _deleteCard(cardElement) {
-    cardElement.remove();
-  }
-
-  _createCard(item, isAppend = true) {
-    const card = new Card(item, this._template, this._onCardClick);
-    const cardElement = card.generate();
-
-    cardElement
-      .querySelector(".element__delete-button")
-      .addEventListener("click", () => {
-        this._deleteCard(cardElement);
-      });
-
-    isAppend
-      ? this._container.append(cardElement)
-      : this._container.prepend(cardElement);
-  }
-
-  add(name, link) {
-    this._createCard({ name, link }, false);
-  }
-}
-
-const cardList = new CardList(
-  ".elements",
-  initialCards,
-  "#image",
-  handleCardClick
-);
-cardList.init();
+initialCards.forEach((item) => {
+  createCard(item);
+});
 
 cardForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  cardList.add(
-    cardPopup.querySelector("#title").value,
-    cardPopup.querySelector("#url").value
+  createCard(
+    {
+      name: cardPopup.querySelector("#title").value,
+      link: cardPopup.querySelector("#url").value,
+    },
+    false
   );
 
   closePopup(cardPopup);
@@ -121,6 +96,7 @@ new FormValidator(config, profileForm).enableValidation();
 new FormValidator(config, cardForm).enableValidation();
 
 //ОТКРЫТИЕ--------------------------------------------------------------------------------------
+
 function openPopup(popup) {
   // создаём функцию открытия попапа
   popup.classList.add("popup_opened");
@@ -131,21 +107,23 @@ profileOpenBtn.addEventListener("click", function (event) {
   //Открывает первый попап
   nameInput.value = userName.textContent; // Говорю, что значение nameInput and jobInput = тому, что вптсано в title and subtitle
   jobInput.value = job.textContent; // Создаю функцию, которая добавляет модификатор и включает popup
+  disableSubmitButton(profilePopup, config.inactiveButtonClass);
   openPopup(profilePopup); //функция открыть (здесь имя первого попапа )
 });
 
 btnAddCard.addEventListener("click", function () {
+  disableSubmitButton(cardPopup, config.inactiveButtonClass);
   openPopup(cardPopup);
 });
 
 //ПРОСМОТР ОПЕРЕДЕЛЁННОЙ КАРТОЧКИ--------------------------------------------------------------------------------------
 
 function handleCardClick(link, name) {
-  openPopup(imagePopup);
-
   popupTitle.textContent = name;
   popupImage.src = link;
   popupImage.alt = name;
+
+  openPopup(imagePopup);
 }
 
 //ЗАКРЫТИЕ--------------------------------------------------------------------------------------
@@ -153,6 +131,9 @@ function handleCardClick(link, name) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   page.removeEventListener("keyup", closePopupPushEsc);
+  if (popup !== imagePopup) {
+    clearError(popup);
+  }
 }
 
 closeButtons.forEach((button) => {
@@ -166,9 +147,8 @@ closeButtons.forEach((button) => {
 function closePopupPushEsc(evt) {
   // при нажатии на esc popup закрывается
   if (evt.key === "Escape") {
-    popups.forEach((popup) => {
-      closePopup(popup);
-    });
+    const openedPopup = page.querySelector(".popup_opened");
+    closePopup(openedPopup);
   }
 }
 

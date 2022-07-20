@@ -31,11 +31,24 @@ class Card {
       .classList.toggle("element__heart_active");
   }
 
+  _deleteCard() {
+    const item = this._element
+      .querySelector(".element__delete-button")
+      .closest("li");
+    item.remove(item);
+  }
+
   _setEventListeners() {
     this._element
       .querySelector(".element__heart")
       .addEventListener("click", () => {
         this._changeHeartColor();
+      });
+
+    this._element
+      .querySelector(".element__delete-button")
+      .addEventListener("click", () => {
+        this._deleteCard();
       });
 
     const popupImagesOpen = this._element.querySelector(".element__image");

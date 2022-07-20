@@ -62,6 +62,36 @@ class FormValidator {
     errorElement.classList.remove(this._config.errorClass);
     errorElement.textContent = "";
   }
+
+  _clearErrors() {
+    const form = popup.querySelector(this._config.formSelector);
+
+    popup
+      .querySelectorAll(this._config.inputSelector)
+      .forEach((inputElement) => {
+        _hideInputError(form, inputElement);
+      });
+  }
 }
 
-export { FormValidator };
+function disableSubmitButton(popup, inactiveButtonClass) {
+  const button = popup.querySelector(".popup__submit-button");
+
+  if (button) {
+    button.setAttribute(inactiveButtonClass, true);
+  }
+}
+
+function clearError(popup) {
+  const isForm = popup.querySelector(".popup__form");
+  const inputForm = isForm.querySelectorAll(".popup__field-error");
+  const inputRedLine = isForm.querySelectorAll(".popup__field_type_error");
+  inputForm.forEach((form) => {
+    form.classList.remove("popup__field-error_active");
+  });
+  inputRedLine.forEach((form) => {
+    form.classList.remove("popup__field_type_error");
+  });
+}
+
+export { FormValidator, disableSubmitButton, clearError };
