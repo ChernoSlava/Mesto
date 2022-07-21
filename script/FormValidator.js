@@ -82,16 +82,19 @@ function disableSubmitButton(popup, inactiveButtonClass) {
   }
 }
 
+import { imagePopup } from "./index.js";
 function clearError(popup) {
-  const isForm = popup.querySelector(".popup__form");
-  const inputForm = isForm.querySelectorAll(".popup__field-error");
-  const inputRedLine = isForm.querySelectorAll(".popup__field_type_error");
-  inputForm.forEach((form) => {
-    form.classList.remove("popup__field-error_active");
-  });
-  inputRedLine.forEach((form) => {
-    form.classList.remove("popup__field_type_error");
-  });
+  if (popup !== imagePopup) {
+    const isForm = popup.querySelector(".popup__form");
+    const inputForm = isForm.querySelectorAll(".popup__field-error");
+    const inputRedLine = isForm.querySelectorAll(".popup__field_type_error");
+    inputForm.forEach((form) => {
+      form.classList.remove("popup__field-error_active");
+    });
+    inputRedLine.forEach((form) => {
+      form.classList.remove("popup__field_type_error");
+    });
+  }
 }
 
 export { FormValidator, disableSubmitButton, clearError };

@@ -17,7 +17,7 @@ const profileForm = document.querySelector(".profile-form");
 const cardForm = document.querySelector(".card-form");
 const profilePopup = document.querySelector(".profile-popup");
 const cardPopup = document.querySelector(".card-popup");
-const imagePopup = document.querySelector(".image-popup");
+export const imagePopup = document.querySelector(".image-popup");
 
 const nameInput = document.querySelector(".popup__field_type_name");
 const jobInput = document.querySelector(".popup__field_type_job"); // Назначаю переменную и вибираю откуда
@@ -131,9 +131,7 @@ function handleCardClick(link, name) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   page.removeEventListener("keyup", closePopupPushEsc);
-  if (popup !== imagePopup) {
-    clearError(popup);
-  }
+  clearError(popup);
 }
 
 closeButtons.forEach((button) => {

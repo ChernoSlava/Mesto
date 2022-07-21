@@ -32,10 +32,8 @@ class Card {
   }
 
   _deleteCard() {
-    const item = this._element
-      .querySelector(".element__delete-button")
-      .closest("li");
-    item.remove(item);
+    this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
