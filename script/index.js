@@ -60,35 +60,30 @@ const initialCards = [
 ];
 
 const container = document.querySelector(".elements");
+const nameTitleValue = cardPopup.querySelector("#title");
+const linkTitleValue = cardPopup.querySelector("#url");
 
-const createCard = (item, isAppend = true) => {
+const createCard = (item) => {
   const card = new Card(item, "#image", handleCardClick);
-  const cardElement = card.generate();
-
-  if (isAppend) {
-    container.append(cardElement);
-  } else {
-    container.prepend(cardElement);
-  }
+  // const cardElement = card.generate();
+  return card.generate();
 };
 
 initialCards.forEach((item) => {
-  createCard(item);
+  const arreyCardElement = createCard(item);
+  container.append(arreyCardElement);
 });
 
 cardForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  createCard(
-    {
-      name: cardPopup.querySelector("#title").value,
-      link: cardPopup.querySelector("#url").value,
-    },
-    false
-  );
+  
+  const newCardElement = createCard({
+    name: nameTitleValue.value,
+    link: linkTitleValue.value,
+  });
+  container.prepend(newCardElement);
 
   closePopup(cardPopup);
-
   e.target.reset();
 });
 
