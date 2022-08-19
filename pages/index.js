@@ -1,9 +1,15 @@
-import { Card } from "./Card.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+// import Popup from "./Popup";
+
 import {
   FormValidator,
   disableSubmitButton,
   clearError,
-} from "./FormValidator.js";
+} from "../components/FormValidator.js";
 
 const profileOpenBtn = document.querySelector(".profile__button");
 const btnAddCard = document.querySelector(".profile__add-button");
@@ -63,29 +69,61 @@ const container = document.querySelector(".elements");
 const nameTitleValue = cardPopup.querySelector("#title");
 const linkTitleValue = cardPopup.querySelector("#url");
 
-const createCard = (item) => {
-  const card = new Card(item, "#image", handleCardClick);
-  // const cardElement = card.generate();
-  return card.generate();
+
+
+const createCard = new Section (
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, "#image", handleCardClick);
+      const cardElement = card.generate();
+
+      createCard.addItem(cardElement);
+    },
+  },
+  container
+);
+
+createCard.renderItems();
+
+
+//--------------------------------
+
+
+
+const createNewCard = (item) => {
+  // const card = new Card(item, "#image", handleCardClick);
+  return new Card(item, "#image", handleCardClick).generate();
 };
 
-initialCards.forEach((item) => {
-  const arreyCardElement = createCard(item);
-  container.append(arreyCardElement);
-});
 
 cardForm.addEventListener("submit", (e) => {
   e.preventDefault();
   
-  const newCardElement = createCard({
+  const newCardElement = createNewCard({
     name: nameTitleValue.value,
     link: linkTitleValue.value,
   });
+
+
   container.prepend(newCardElement);
 
   closePopup(cardPopup);
   e.target.reset();
 });
+
+// cardForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+  
+//   const newCardElement = createCard({
+//     name: nameTitleValue.value,
+//     link: linkTitleValue.value,
+//   });
+//   container.prepend(newCardElement);
+
+//   closePopup(cardPopup);
+//   e.target.reset();
+// });
 
 new FormValidator(config, profileForm).enableValidation();
 new FormValidator(config, cardForm).enableValidation();
@@ -118,8 +156,9 @@ function handleCardClick(link, name) {
   popupImage.src = link;
   popupImage.alt = name;
 
-  openPopup(imagePopup);
+  
 }
+
 
 //ЗАКРЫТИЕ--------------------------------------------------------------------------------------
 

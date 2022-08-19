@@ -82,7 +82,7 @@ function disableSubmitButton(popup, inactiveButtonClass) {
   }
 }
 
-import { imagePopup } from "./index.js";
+import { imagePopup } from "../utils/constants.js";
 function clearError(popup) {
   if (popup !== imagePopup) {
     const isForm = popup.querySelector(".popup__form");
