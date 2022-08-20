@@ -15,11 +15,3 @@ export default class Section {
     });
   }
 }
-
-// export class NewSection extends Section {
-
-
-//     addItem(element) {
-//         this._container.prepend(element);
-//     }
-// }
