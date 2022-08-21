@@ -7,10 +7,7 @@ import { PopupWithForm } from "../components/PopupWithForm";
 
 import { UserInfo } from "../components/UserInfo";
 
-import {
-  FormValidator,
-  disableSubmitButton,
-} from "../components/FormValidator";
+import { FormValidator } from "../components/FormValidator";
 
 import {
   initialCards,
@@ -18,24 +15,22 @@ import {
   btnAddCard,
   nameInput,
   jobInput,
-  profileForm,
-  cardForm,
   config,
-  profilePopupElement,
-  nameTitleValue,
-  linkTitleValue,
 } from "../utils/constants";
+
+const handleCardClick = (link, name) => {
+  imagePopup.open(link, name);
+};
+
+const createNewCard = (item) => {
+  return new Card(item, "#image", handleCardClick).generate();
+};
 
 const section = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#image", () => {
-        imagePopup.open(item.link, item.name);
-      });
-      const cardElement = card.generate();
-
-      return cardElement;
+      return createNewCard(item);
     },
   },
   ".elements"
@@ -50,12 +45,10 @@ const imagePopup = new PopupWithImage({
 const profilePopup = new PopupWithForm({
   popupSelector: ".profile-popup",
   formSelector: ".profile-form",
-  formSubmitHandler: (evt) => {
-    evt.preventDefault();
-
+  formSubmitHandler: ({ name, job }) => {
     userInfo.setUserInfo({
-      name: nameInput.value,
-      desc: jobInput.value,
+      name,
+      desc: job,
     });
 
     profilePopup.close();
@@ -65,19 +58,8 @@ const profilePopup = new PopupWithForm({
 const cardPopup = new PopupWithForm({
   popupSelector: ".card-popup",
   formSelector: ".card-form",
-  formSubmitHandler: (e) => {
-    e.preventDefault();
-
-    const card = new Card(
-      {
-        link: linkTitleValue.value,
-        name: nameTitleValue.value,
-      },
-      "#image",
-      (link, name) => {
-        imagePopup.open(link, name);
-      }
-    ).generate();
+  formSubmitHandler: ({ link, title }) => {
+    const card = createNewCard({ link, name: title });
 
     section.addItemToTop(card);
     cardPopup.close();
@@ -95,20 +77,24 @@ imagePopup.setEventListeners();
 profilePopup.setEventListeners();
 cardPopup.setEventListeners();
 
+const profileFormValidator = new FormValidator(config, profilePopup.form);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(config, cardPopup.form);
+cardFormValidator.enableValidation();
+
 profileOpenBtn.addEventListener("click", () => {
   const { name, desc } = userInfo.getUserInfo();
 
   nameInput.value = name;
   jobInput.value = desc;
 
-  disableSubmitButton(profilePopupElement, config.inactiveButtonClass);
+  profileFormValidator.disableSubmitButton();
 
   profilePopup.open();
 });
 
 btnAddCard.addEventListener("click", () => {
+  cardFormValidator.disableSubmitButton();
   cardPopup.open();
 });
-
-new FormValidator(config, profileForm).enableValidation();
-new FormValidator(config, cardForm).enableValidation();
