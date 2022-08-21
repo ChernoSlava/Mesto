@@ -1,30 +1,24 @@
-import Popup from "./Popup.js";
+import { Popup } from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
-    constructor({popupSelector, formSabmHandler}) {
-        super({popupSelector});
+export class PopupWithForm extends Popup {
+  constructor({ popupSelector, formSubmitHandler, formSelector }) {
+    super(popupSelector);
 
-        this._formSabmitHandler = formSabmHandler;
-        this._form = this._popupSelector.querySelector('.cardForm');
-    }
+    this._formSubmitHandler = formSubmitHandler;
+    this._form = this._popupElement.querySelector(formSelector);
+  }
 
-    open() {
-        super.open();
-    }
+  _getInputValues() {}
 
-    
+  setEventListeners() {
+    super.setEventListeners();
 
-    _getInputValues () {
+    this._form.addEventListener("submit", this._formSubmitHandler);
+  }
 
-    }
+  close() {
+    super.close();
 
-    setEventListeners() {
-        super.setEventListeners();
-        
-    }
-
-    close() {
-        super.close();
-        this._form.reset();
-    }
+    this._form.reset();
+  }
 }

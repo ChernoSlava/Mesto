@@ -1,4 +1,6 @@
-class FormValidator {
+import { imagePopup } from "../utils/constants.js";
+
+export class FormValidator {
   constructor(config, formElement) {
     this._formElement = formElement;
     this._config = config;
@@ -74,16 +76,15 @@ class FormValidator {
   }
 }
 
-function disableSubmitButton(popup, inactiveButtonClass) {
+export const disableSubmitButton = (popup, inactiveButtonClass) => {
   const button = popup.querySelector(".popup__submit-button");
 
   if (button) {
     button.setAttribute(inactiveButtonClass, true);
   }
-}
+};
 
-import { imagePopup } from "../utils/constants.js";
-function clearError(popup) {
+export const clearError = (popup) => {
   if (popup !== imagePopup) {
     const isForm = popup.querySelector(".popup__form");
     const inputForm = isForm.querySelectorAll(".popup__field-error");
@@ -95,6 +96,4 @@ function clearError(popup) {
       form.classList.remove("popup__field_type_error");
     });
   }
-}
-
-export { FormValidator, disableSubmitButton, clearError };
+};

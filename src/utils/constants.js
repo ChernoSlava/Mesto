@@ -1,23 +1,16 @@
-const profileOpenBtn = document.querySelector(".profile__button");
-const btnAddCard = document.querySelector(".profile__add-button");
-const page = document.querySelector(".page");
-
-const closeButtons = document.querySelectorAll(".popup__close-icon");
-const popups = document.querySelectorAll(".popup");
-const popupImage = document.querySelector(".popup__image");
-const popupTitle = document.querySelector(".popup__image-title");
-const profileForm = document.querySelector(".profile-form");
-const cardForm = document.querySelector(".card-form");
-const profilePopup = document.querySelector(".profile-popup");
-const cardPopup = document.querySelector(".card-popup");
+export const profileOpenBtn = document.querySelector(".profile__button");
+export const btnAddCard = document.querySelector(".profile__add-button");
+export const nameInput = document.querySelector(".popup__field_type_name");
+export const jobInput = document.querySelector(".popup__field_type_job");
+export const profileForm = document.querySelector(".profile-form");
+export const cardForm = document.querySelector(".card-form");
 export const imagePopup = document.querySelector(".image-popup");
+export const profilePopupElement = document.querySelector(".profile-popup");
+const cardPopupElement = document.querySelector(".card-popup");
+export const nameTitleValue = cardPopupElement.querySelector("#title");
+export const linkTitleValue = cardPopupElement.querySelector("#url");
 
-const nameInput = document.querySelector(".popup__field_type_name");
-const jobInput = document.querySelector(".popup__field_type_job"); // Назначаю переменную и вибираю откуда
-const userName = document.querySelector(".profile__title"); // Назначаю переменную userName и job
-const job = document.querySelector(".profile__subtitle");
-
-const config = {
+export const config = {
   inputSelector: ".popup__field",
   submitButtonSelector: ".popup__submit-button",
   inactiveButtonClass: "disabled",
@@ -25,7 +18,7 @@ const config = {
   errorClass: "popup__field-error_active",
 };
 
-const initialCards = [
+export const initialCards = [
   {
     name: "По мосту?",
     link: "https://images.unsplash.com/photo-1647883635719-8debb528c5fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHR1cmtleSUyMGJyaWRnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
@@ -51,7 +44,3 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1596995804697-27d11d43652e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGZvb2QlMjBrZWJhYnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
 ];
-
-const container = document.querySelector(".elements");
-const nameTitleValue = cardPopup.querySelector("#title");
-const linkTitleValue = cardPopup.querySelector("#url");
