@@ -22,7 +22,7 @@ export class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput(Array.from(this._inputs))) {
-      this._button.setAttribute(this._config.inactiveButtonClass, true);
+      this.disableSubmitButton();
     } else {
       this._button.removeAttribute(this._config.inactiveButtonClass);
     }

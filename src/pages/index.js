@@ -4,9 +4,7 @@ import { Card } from "../components/Card";
 import { Section } from "../components/Section";
 import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
-
 import { UserInfo } from "../components/UserInfo";
-
 import { FormValidator } from "../components/FormValidator";
 
 import {
