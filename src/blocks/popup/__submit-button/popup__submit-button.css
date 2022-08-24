@@ -32,3 +32,11 @@
     text-align: center;
   }
 }
+
+.popup__submit-avatar {
+  margin-top: 40px;
+}
+
+.popup__submit-delete {
+  margin-top: 38px;
+}

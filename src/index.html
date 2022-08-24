@@ -54,6 +54,7 @@
         </form>
       </div>
     </div>
+
     <div class="popup card-popup">
       <div class="popup__container container">
         <p class="popup__title">Новое место</p>
@@ -95,6 +96,7 @@
         </form>
       </div>
     </div>
+
     <div class="popup image-popup" id="popupCardView">
       <div class="popup__image-container container">
         <img
@@ -106,28 +108,71 @@
         <button type="button" class="popup__close-icon"></button>
       </div>
     </div>
+
+    <!--Аватар popup-->
+    <div class="popup avatar-popup">
+      <div class="popup__container container">
+        <p class="popup__title">Обновить Аватар</p>
+        <button type="button" class="popup__close-icon"></button>
+        <form class="popup__form popup__avatar-form" novalidate>
+          <fieldset class="popup__set">
+            <input
+              id="url"
+              type="url"
+              name="avatar"
+              class="popup__field popup__field_type_avatar"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__field-error popup__field-error_field_avatar"
+              >Необходимо заполнить данное поле</span
+            >
+            <button
+              type="submit"
+              class="popup__submit-button popup__submit-avatar"
+              id="#"
+            >
+              Сохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <!--Удаление popup-->
+
+    <div class="popup delete-popup">
+      <div class="popup__container container popup__container-delete">
+        <p class="popup__title">Вы уверены?</p>
+        <button type="button" class="popup__close-icon"></button>
+        <button
+          type="submit"
+          class="popup__submit-button popup__submit-delete"
+          id="#"
+        >
+          ДА
+        </button>
+      </div>
+    </div>
+
     <header class="header">
-      <img
-        class="header__logo"
-        alt="Логотип социальной сети Место, с подписью Россия"
-        src=<%=require("./images/logo.svg")%>
-      />
+      <img class="header__logo" alt="Логотип социальной сети Место, с подписью
+      Россия" src=<%=require("./images/logo.svg")%> />
       <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
-        <img
-          src=<%=require("./images/Profile__image.jpg")%>
-          alt="Фото профиля"
-          class="profile__avatar"
-        />
+        <div class="profile__avatar">
+          <img src=<%=require("./images/Profile__image.jpg")%> alt="Фото
+          профиля" class="profile__avatar-element" />
+          <button class="profile__avatar-btn" type="button"></button>
+        </div>
+
         <div class="profile__info">
           <h1 class="profile__title">Ататюрк М.К.</h1>
           <button type="button" class="profile__button">
-            <img
-              src=<%=require("./images/Profile__Edit-Button.svg")%>
-              alt="Кнопка редактирования"
-            />
+            <img src=<%=require("./images/Profile__Edit-Button.svg")%>
+            alt="Кнопка редактирования" />
           </button>
           <p class="profile__subtitle">Первый президент Турции</p>
         </div>
@@ -150,12 +195,15 @@
         />
         <div class="element__info">
           <h2 class="element__title">В путешествие?</h2>
-          <button
-            type="button"
-            name="heart"
-            class="element__heart"
-            value=" "
-          ></button>
+          <div>
+            <button
+              type="button"
+              name="heart"
+              class="element__heart"
+              value=" "
+            ></button>
+            <p class="element__number">4</p>
+          </div>
         </div>
       </li>
     </template>

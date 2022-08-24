@@ -2,6 +2,9 @@ export const profileOpenBtn = document.querySelector(".profile__button");
 export const btnAddCard = document.querySelector(".profile__add-button");
 export const nameInput = document.querySelector(".popup__field_type_name");
 export const jobInput = document.querySelector(".popup__field_type_job");
+export const deletePopupCard = document.querySelector(".delete-popup");
+export const avatar = document.querySelector(".profile__avatar-element");
+export const handlerSubmitBtn = document.querySelector(".popup__submit-button");
 
 export const config = {
   inputSelector: ".popup__field",

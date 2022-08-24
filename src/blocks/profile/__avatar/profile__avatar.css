@@ -1,13 +1,5 @@
 .profile__avatar {
-  object-fit: cover;
-  width: 120.75px;
-  height: 120.5px;
-  border-radius: 50%;
-  background-size: auto 127px;
-}
-
-@media screen and (max-width: 600px) {
-  .profile__avatar {
-    justify-self: center;
-  }
+  position: relative;
+  height: 120px;
+  width: 120px;
 }

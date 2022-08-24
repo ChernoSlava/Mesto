@@ -6,6 +6,7 @@
   min-height: 120px;
   padding-left: 16%;
   padding-right: 16%;
+  position: relative;
 }
 
 @media screen and (max-width: 950px) {

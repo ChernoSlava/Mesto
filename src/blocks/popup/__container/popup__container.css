@@ -15,3 +15,7 @@
     height: 322px;
   }
 }
+
+.popup__container-delete {
+  min-height: 185px;
+}
