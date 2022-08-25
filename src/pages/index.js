@@ -16,7 +16,6 @@ import {
   jobInput,
   config,
   avatarElement,
-  handlerSubmitBtn,
   profileTitle,
   profileSubTitle,
   avatarFormSubmitBtn,
@@ -140,8 +139,15 @@ const cardPopup = new PopupWithForm({
         link,
         name: title,
       })
-      .then(({ _id, owner }) => {
-        const card = createNewCard({ link, name: title, _id, owner, userId });
+      .then(({ _id, owner, likes }) => {
+        const card = createNewCard({
+          link,
+          name: title,
+          _id,
+          owner,
+          userId,
+          likes,
+        });
 
         section.addItemToTop(card);
         cardPopup.close();
@@ -151,7 +157,7 @@ const cardPopup = new PopupWithForm({
   },
 });
 
-const cardDeletePopup = new PopupWithForm({
+const cardDeletePopup = new PopupWithConfirmation({
   popupSelector: ".delete-card-popup",
   formSelector: ".popup__form",
 });

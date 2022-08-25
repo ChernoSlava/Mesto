@@ -47,7 +47,7 @@ export class Card {
     this._deleteButton = this._element.querySelector(".element__delete-button");
 
     if (this._owner._id !== this._userId) {
-      this._deleteButton.style.display = "none";
+      this._deleteButton.classList.add("element__delete-button_hidden");
     }
 
     if (this.likes.find((x) => x._id === this._userId)) {
