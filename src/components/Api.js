@@ -4,39 +4,39 @@ export class Api {
     this._headers = headers;
   }
 
-  _checkAnswer(res) {
+  _checkResponse(res) {
     if (res.ok) {
-      return res.Json();
+      return res.json();
     }
     return Promise.reject(`Что-то упало: ${res.status}`);
   }
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, { headers: this._headers }).then(
-      this._checkAnswer
+      this._checkResponse
     );
   }
 
   postCard(card) {
-    return fetch(`${this._url}/card`, {
+    return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(card),
-    }).then(this._checkAnswer);
+    }).then(this._checkResponse);
   }
 
   doLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
-    }).then(this._checkAnswer);
+    }).then(this._checkResponse);
   }
 
   deleteLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._checkAnswer);
+    }).then(this._checkResponse);
   }
 
   deleteCard(id) {
@@ -49,7 +49,6 @@ export class Api {
   getUserInfoFromServer() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
-      body: JSON.stringify(),
     }).then(this._checkResponse);
   }
 

@@ -5,21 +5,24 @@ import { Card } from "../components/Card";
 import { Section } from "../components/Section";
 import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
+import { PopupWithConfirmation } from "../components/popupWithConfirmation";
 import { UserInfo } from "../components/UserInfo";
 import { FormValidator } from "../components/FormValidator";
 
 import {
-  initialCards,
   profileOpenBtn,
   btnAddCard,
   nameInput,
   jobInput,
   config,
-  deletePopupCard,
-  avatar,
+  avatarElement,
   handlerSubmitBtn,
+  profileTitle,
+  profileSubTitle,
+  avatarFormSubmitBtn,
+  profileFormSubmitBtn,
+  cardFormSubmitBtn,
 } from "../utils/constants";
-import { PopupWithConfirmation } from "../components/popupWithConfirmation";
 
 const api = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-48",
@@ -29,17 +32,8 @@ const api = new Api({
   },
 });
 
-const handleCardClick = (link, name) => {
-  imagePopup.open(link, name);
-};
-
-const createNewCard = (item) => {
-  return new Card(item, "#image", handleCardClick).generate();
-};
-
 const section = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       return createNewCard(item);
     },
@@ -47,7 +41,63 @@ const section = new Section(
   ".elements"
 );
 
-// const confirmPopup = new PopupWithConfirmation(deletePopupCard, api);
+let userId = null;
+
+api.getUserInfoFromServer().then((res) => {
+  profileTitle.textContent = res.name;
+  profileSubTitle.textContent = res.about;
+  avatarElement.src = res.avatar;
+
+  userId = res._id;
+
+  api.getInitialCards().then((cards) => {
+    section.renderItems(
+      cards.map((x) => ({
+        ...x,
+        userId,
+      }))
+    );
+  });
+});
+
+const handleCardClick = (link, name) => {
+  imagePopup.open(link, name);
+};
+
+const handleCardLikeClick = (id, card) => {
+  if (card.likes.find((x) => x._id === userId)) {
+    api.deleteLike(id).then((res) => {
+      card.changeHeartColor();
+      card.likes = res.likes;
+    });
+  } else {
+    api.doLike(id).then((res) => {
+      card.changeHeartColor();
+      card.likes = res.likes;
+    });
+  }
+};
+
+const handleCardDeleteClick = (id, card) => {
+  cardDeletePopup.open();
+
+  cardDeletePopup.setSubmitHandler(() => {
+    api.deleteCard(id).then(() => {
+      card.deleteCard();
+      cardDeletePopup.close();
+    });
+  });
+};
+
+const createNewCard = (item) => {
+  return new Card(
+    item,
+    "#image",
+    handleCardClick,
+    handleCardDeleteClick,
+    handleCardLikeClick
+  ).generate();
+};
 
 const imagePopup = new PopupWithImage({
   popupSelector: ".image-popup",
@@ -59,14 +109,23 @@ const profilePopup = new PopupWithForm({
   popupSelector: ".profile-popup",
   formSelector: ".profile-form",
   formSubmitHandler: ({ name, job }) => {
-    handlerSubmitBtn.textContent = "Сохранение...";
+    profileFormSubmitBtn.textContent = "Сохранение...";
 
-    userInfo.setUserInfo({
-      name,
-      desc: job,
-    });
+    api
+      .setUserInfoToServer({
+        name,
+        about: job,
+      })
+      .then(() => {
+        userInfo.setUserInfo({
+          name,
+          desc: job,
+        });
 
-    profilePopup.close();
+        profilePopup.close();
+
+        profileFormSubmitBtn.textContent = "Сохранить";
+      });
   },
 });
 
@@ -74,23 +133,46 @@ const cardPopup = new PopupWithForm({
   popupSelector: ".card-popup",
   formSelector: ".card-form",
   formSubmitHandler: ({ link, title }) => {
-    handlerSubmitBtn.textContent = "Сохранение...";
+    cardFormSubmitBtn.textContent = "Сохранение...";
 
-    const card = createNewCard({ link, name: title });
+    api
+      .postCard({
+        link,
+        name: title,
+      })
+      .then(({ _id, owner }) => {
+        const card = createNewCard({ link, name: title, _id, owner, userId });
 
-    section.addItemToTop(card);
-    cardPopup.close();
+        section.addItemToTop(card);
+        cardPopup.close();
+
+        cardFormSubmitBtn.textContent = "Сохранить";
+      });
   },
+});
+
+const cardDeletePopup = new PopupWithForm({
+  popupSelector: ".delete-card-popup",
+  formSelector: ".popup__form",
 });
 
 const avatarPopup = new PopupWithForm({
   popupSelector: ".avatar-popup",
   formSelector: ".popup__avatar-form",
-  formSubmitHandler: (link) => {
-    handlerSubmitBtn.textContent = "Сохранение...";
+  formSubmitHandler: ({ avatar }) => {
+    avatarFormSubmitBtn.textContent = "Сохранение...";
 
-    avatar.src = link;
-    avatarPopup.close();
+    api
+      .setUserAvatarToServer({
+        avatar,
+      })
+      .then(() => {
+        avatarElement.src = avatar;
+
+        avatarPopup.close();
+
+        avatarFormSubmitBtn.textContent = "Сохранить";
+      });
   },
 });
 
@@ -99,11 +181,10 @@ const userInfo = new UserInfo({
   selectorDesc: ".profile__subtitle",
 });
 
-section.renderItems();
-
 imagePopup.setEventListeners();
 profilePopup.setEventListeners();
 cardPopup.setEventListeners();
+cardDeletePopup.setEventListeners();
 avatarPopup.setEventListeners();
 
 const profileFormValidator = new FormValidator(config, profilePopup.form);

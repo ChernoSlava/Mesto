@@ -15,6 +15,5 @@ export class UserInfo {
   setUserInfo(newProfileInfo) {
     this._profileNameElement.textContent = newProfileInfo.name;
     this._profileDescrElement.textContent = newProfileInfo.desc;
-    // this._profileAvatarElement.src = newProfileInfo.avatar;
   }
 }

@@ -45,7 +45,7 @@
             >
             <button
               type="submit"
-              class="popup__submit-button"
+              class="popup__submit-button popup__submit-profile-btn"
               id="btnEditProfile"
             >
               Сохранить
@@ -87,7 +87,7 @@
             >
             <button
               type="submit"
-              class="popup__submit-button"
+              class="popup__submit-button popup__submit-form-card-btn"
               id="btnCreateCard"
             >
               Создать
@@ -141,17 +141,19 @@
 
     <!--Удаление popup-->
 
-    <div class="popup delete-popup">
+    <div class="popup delete-card-popup">
       <div class="popup__container container popup__container-delete">
         <p class="popup__title">Вы уверены?</p>
         <button type="button" class="popup__close-icon"></button>
-        <button
-          type="submit"
-          class="popup__submit-button popup__submit-delete"
-          id="#"
-        >
-          ДА
-        </button>
+        <form class="popup__form">
+          <button
+            type="submit"
+            class="popup__submit-button popup__submit-delete"
+            id="#"
+          >
+            ДА
+          </button>
+        </form>
       </div>
     </div>
 
@@ -202,7 +204,7 @@
               class="element__heart"
               value=" "
             ></button>
-            <p class="element__number">4</p>
+            <p class="element__number">0</p>
           </div>
         </div>
       </li>
