@@ -27,13 +27,26 @@ export class Card {
     return cardElement;
   }
 
-  get likes() {
-    return this._likes;
+  getLikes() {
+    return this._likes || [];
   }
 
-  set likes(items) {
+  setLikes(items) {
     this._likes = items;
-    this._likesElement.textContent = this._likes.length;
+    this._updateLikesCount();
+    this._changeHeartColor();
+  }
+
+  _updateLikesCount() {
+    this._likesElement.textContent = this.getLikes().length;
+  }
+
+  hasOwnLikes() {
+    return !!this.getLikes().find((x) => x._id === this._userId);
+  }
+
+  isOwnCard() {
+    return this._owner._id === this._userId;
   }
 
   generate() {
@@ -46,26 +59,28 @@ export class Card {
     this._likesElement = this._element.querySelector(".element__number");
     this._deleteButton = this._element.querySelector(".element__delete-button");
 
-    if (this._owner._id !== this._userId) {
+    if (!this.isOwnCard()) {
       this._deleteButton.classList.add("element__delete-button_hidden");
     }
 
-    if (this.likes.find((x) => x._id === this._userId)) {
-      this.changeHeartColor();
-    }
+    this._changeHeartColor();
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._element.querySelector(".element__title").textContent = this._name;
-    this._likesElement.textContent = this._likes?.length || 0;
+    this._updateLikesCount();
 
     this._setEventListeners();
 
     return this._element;
   }
 
-  changeHeartColor() {
-    this._likeButton.classList.toggle("element__heart_active");
+  _changeHeartColor() {
+    if (this.hasOwnLikes()) {
+      this._likeButton.classList.add("element__heart_active");
+    } else {
+      this._likeButton.classList.remove("element__heart_active");
+    }
   }
 
   deleteCard() {
@@ -78,7 +93,7 @@ export class Card {
       this._handleCardLikeClick(this._id, this);
     });
 
-    if (this._owner._id === this._userId) {
+    if (this.isOwnCard()) {
       this._element
         .querySelector(".element__delete-button")
         .addEventListener("click", () => {

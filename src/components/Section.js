@@ -16,8 +16,7 @@ export class Section {
     this._items = items;
 
     this._items.forEach((item) => {
-      const itemElement = this._renderer(item);
-      this.addItem(itemElement);
+      this._renderer(item);
     });
   }
 }

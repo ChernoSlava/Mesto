@@ -117,6 +117,7 @@
         <form class="popup__form popup__avatar-form" novalidate>
           <fieldset class="popup__set">
             <input
+              id="url"
               type="url"
               name="avatar"
               class="popup__field popup__field_type_avatar"
@@ -144,14 +145,13 @@
       <div class="popup__container container popup__container-delete">
         <p class="popup__title">Вы уверены?</p>
         <button type="button" class="popup__close-icon"></button>
-        <form class="popup__form">
-          <button
-            type="submit"
-            class="popup__submit-button popup__submit-delete"
-          >
-            ДА
-          </button>
-        </form>
+        <button
+          type="submit"
+          class="popup__submit-button popup__submit-delete"
+          id="#"
+        >
+          ДА
+        </button>
       </div>
     </div>
 
@@ -187,10 +187,7 @@
     </footer>
     <template id="image">
       <li class="element">
-        <button
-          type="button"
-          class="element__delete-button"
-        ></button>
+        <button type="button" class="element__delete-button"></button>
         <img
           class="element__image"
           src="https://images.unsplash.com/photo-1450500392544-c2cb0fd6e3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
