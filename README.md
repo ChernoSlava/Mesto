@@ -14,7 +14,7 @@
 
 ---
 
-## **Ссылка на проэкт в gh-pages: https://chernoslava.github.io/Mesto/**
+## **Ссылка на проэкт в gh-pages: https://ChernoSlava.github.io/Mesto/**
 
 ### Отличие от всех прошлых проектов в том, что здесь(в 1-ой версии):
 
