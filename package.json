@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve",
+    "dev": "webpack server",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/ChernoSlava/mesto/issues"
   },
-  "homepage": "https://github.com/ChernoSlava/mesto#readme",
+  "homepage": "https://chernoslava.github.io/Mesto/",
   "keywords": [],
   "devDependencies": {
     "@babel/core": "^7.18.10",
