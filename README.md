@@ -1,136 +1,142 @@
-# Проект: Место
+# Project: Location
 
-## Описание работы
+## Job Description
 
-Сей проект является 9-ой проектной работой, на курсе Яндекс.Практикум Черногорова Вячеслава.
+This project is the 9th project work on the Yandex course.The workshop of Viacheslav Chernogorov.
 
-В финальной версии он должен представлять социальную сеть, где пользователь может редактировать свой аккаунт, добавлять картинки, описывать их и лайкать понравившиеся.
+In the final version, it should represent a social network where the user can edit his account, add pictures, describe them and like the ones he likes.
 
-В данной версии мы используем api.
-
----
-
-### _Внимание!!! Если вы открываете проект из России, возможно понадобится включить vpn, иначе картинки могут не загрузиться!!!_
+In this version, we use the api.
 
 ---
 
-### Отличие от всех прошлых проектов в том, что здесь(в 1-ой версии):
+### _mindedness!!! If you are opening a project from Russia, you may need to enable vpn, otherwise the pictures may not load!!!_
 
-1. Я сверстал и подключил большее количество форм и кнопок.
-2. Научился верстать pop-up.
-3. Через модификатор и js сделал сокрытие и открытие pop-up.
-4. Нeмного погрузился в основы и начал более осознанно использовать JavaScript.
-5. Начал более правильно и точно формулировать свои вопросы, и их гуглить (яндексить:D).
-6. Начал более грамотно и осознанно называть коммиты, пользоваться ветками.
+---
 
-### Отличие от всех прошлых проектов в том, что здесь(во 2-ой версии):
+### The difference from all past projects is that here (in the 1st version):
 
-1. Я работал практически 95% времени используя js.
-2. Добавил первые карточки через ТЕГ Template, испольщую массив.
-3. Сверстал и подключил новую форму, которая добавляет новые картинки в проект.
-4. Сделал всем карточкам возможность ставить лайки.
-5. Реализовал функцию удаление карточки через нажатие на спец кнопку урны на картинке.
-6. Настроил просмотр фотографий, при нажатии на картинку, она разворачивается, а при нажатие на крестик скрывается.
-7. Добавил плавное открытие и закрытие всех попапов.
+1. I have made up and connected more forms and buttons.
+2. I learned how to make up pop-up.
+3. Through the modifier and js did the hiding and opening of the pop-up.
+4. I got into the basics a bit and started using JavaScript more consciously.
+5. I started to formulate my questions more correctly and accurately, and Google them (yandex:D).
+6. I started naming commits more competently and consciously, using branches.
 
-### Отличие от всех прошлых проектов в том, что здесь(в 3-ей версии):
+### The difference from all past projects is that here (in the 2nd version):
 
-1. Добавлена валидация всех форм через js.
-2. Использованы методы декомпозиции и инкапсуляции.
-3. Был создан и подключён к index.html файл validate.js, где располагается функции валидации форм.
-4. Закрытие попапов теперь может осуществляться по кликам на overley и клавишу Esc.
+1. I worked almost 95% of the time using js.
+2. Added the first cards via the Template TAG using an array.
+3. I made up and connected a new form that adds new images to the project.
+4. Made it possible for all cards to put likes.
+5. Implemented the card deletion function by clicking on the special urn button in the picture.
+6. I set up viewing photos, when you click on the picture, it unfolds, and when you click on the cross it hides.
+7. Added smooth opening and closing of all popups.
 
-### Отличие от всех прошлых проектов в том, что здесь(в 4-ой версии):
+### The difference from all past projects is that here (in the 3rd version):
 
-1. Проведён довольно масшытабный рефакторинг js кода.
-2. Более углублены методы декомпозиции, инкапсуляции, наследования.
-3. При рефакторинге были созданы классы Card и FormValidator, которые упростили понимание кода.
+1. Added validation of all forms via js.
+2. Decomposition and encapsulation methods were used.
+3. Was created and connected to index.html validate file.js, where the form validation functions are located.
+4. Popups can now be closed by clicking on overley and the Esc key.
 
-### Отличие от всех прошлых проектов в том, что здесь(в 5-ой версии):
+### The difference from all past projects is that here (in the 4th version):
 
-1. Создали дополнительные классы и разделили работу между ними.
-2. Использовали слабые связи, для возможности без модификаций использовать некоторые классы.
-3. Использовали для сборки проекта webpack.
-4. Использовали npm и babel.
+1. A rather large-scale refactoring of the js code was carried out.
+2. The methods of decomposition, encapsulation, inheritance are more in-depth.
+3. During refactoring, the Card and FormValidator classes were created, which simplified the understanding of the code.
 
-### Отличие от всех прошлых проектов в том, что здесь(в 6-ой версии):
+### The difference from all past projects is that here (in the 5th version):
 
-1. Создан класс Api и PopupWithConfirmation.
-2. Добавлена возможность смены аватара.
-3. Добавлены 2 новых попапа при удалении карточки и при загрузке нового аватара.
-4. Проект подключён к удалённому серверу, получает и отправляет информацию к нему.
-5. Удалены иконки Удаление карточки с чужих карт.
-6. Количество лайков теперь фиксируется числами.
+1. Created additional classes and divided the work between them.
+2. We used weak connections to be able to use some classes without modifications.
+3. Used to build the webpack project.
+4. Used npm and babel.
+
+### The difference from all past projects is that here (in the 6th version):
+
+1. The Api class and PopupWithConfirmation have been created.
+2. Added the ability to change the avatar.
+3. Added 2 new popups when deleting the card and when loading a new avatar.
+4. The project is connected to a remote server, receives and sends information to it.
+5. Removed icons Removing cards from other people's cards.
+6. The number of likes is now fixed in numbers.
 
 ---
 
 
-### Технологический стек: 
+### Technology stack: 
 
 - HTML, 
 - CSS, 
 - JavaScript, 
 - Babel, 
 - Webpack, 
-- Api проект создан по БЭМ, 
-- Фотограффии с сайти - Unsplash.
+- Api project created by BEM, 
+- Photo graffiti from the site - Unsplash.
 
 ---
 
-## Требования, установка и запуск:
+## Requirements, installation and launch:
 
-### Требования:
+### Requirements:
 
 * npm >= 6.14;
 
-### Установка:
+### Installation:
 
-Для установки на ваш компьютер нужно на локальном компьютере выполнить команду: 
+To install on your computer, you need to run the command on your local computer: 
 
-- `git clone https://github.com/ChernoSlava/Mesto.git` - Для копирования проекта на локальный пк по https;
+- `git clone https://github.com/ChernoSlava/Mesto.git ` - To copy the project to a local PC over https;
 
-После этого в консоли нужно выполнить: 
+After that, in the console, you need to run: 
 
-- `npm install` - Для установки зависимостей;
+- `npm install` - To install dependencies;
 
-Для использования:
+To use:
 
-- `npm run dev` - Команда для запуска проекта;
+- `npm run dev' - Command to start the project;
 
 
 ------ 
-### Специалисты, проверяющие проект
+### Specialists checking the project
 
-Уважаемые ревьюеры, хотелось бы выразить вам огромную благодарность. Настоящую ценность этого курса, я вижу именно в людях работающих в Яндекс.практикум.
+Dear reviewers, I would like to express my great gratitude to you. The real value of this course, I see it in the people working at Yandex.the workshop.
 
-Своей деятельностью, вы добавляете жизни в обучение, даёте классные и грамотные советы, и являетесь наставниками, на которых студенты хотели-бы равняться.
+By your activity, you add life to learning, give cool and competent advice, and are mentors that students would like to look up to.
 
-**_Спасибо вам за вашу Работу._**
+**_Thank you for your work._**
 
-**_Лично для меня вы являетесь ещё одним стимулом к продолжению обучения._**
+** Personally, you are another incentive for me to continue my studies._**
 
-1. Версия проекта №1 - **Гор Григорян**
-2. Версия проекта №2 - **Gennadiy Barsegyan**
-3. Версия проекта №3 - **Ирина Логвинович**
-4. Версия проекта №4 - **Владислав Уханов**
-5. Версия проекта №5 - **Gennadiy Barsegyan**
-6. Версия проекта №6 - **Анастасия Подкопаева**
+1. Project version No. 1 - **Gor Grigoryan**
+2. Project version No.2 - **Gennadiy Barsegyan**
+3. Project version No. 3 - **Irina Logvinovich**
+4. Project version No. 4 - **Vladislav Ukhanov**
+5. Project version No. 5 - **Gennadiy Barsegyan**
+6. Project version No. 6 - **Anastasia Podkopaeva**
 
 
-## Ссылки на другие проекты
-### Проекты созданные при обучении Яндекс.Практикум
+## Links to other projects
+### Projects created during Yandex training.Workshop
 
-1) [Статичный сайт Путешествие по России.](https://chernoslava.github.io/russian-travel/)
-2) [Репозиторий проекта Место на чистом js.](https://github.com/ChernoSlava/Mesto)
-3) [Репозиторий полноценного доработанного проекта Место Frontend и Backend.](https://github.com/ChernoSlava/react-mesto-api-full)
-4) [Дипломный проект Movies explorer](https://github.com/ChernoSlava/movies-explorer-frontend)
+1) [Static website Travel in Russia.](https://chernoslava.github.io/russian-travel/)
+2) [The project repository is located on pure js.](https://github.com/ChernoSlava/Mesto )
+3) [The repository of a full-fledged modified project is the place of Frontend and Backend.](https://github.com/ChernoSlava/react-mesto-api-full )
+4) [Graduation project Movies explorer](https://github.com/ChernoSlava/movies-explorer-frontend )
 
-### Проекты созданные при обучении и менторстве senior web developer Абретова А.
+### Projects created with the training and mentoring of senior web developer Abretova A.
 
 1) [Counter](https://github.com/ChernoSlava/counter)
 2) [Counter-temperature](https://github.com/ChernoSlava/counter-temperature)
 3) [ToDo list](https://github.com/ChernoSlava/ToDo)
 4) [Contacts keeper](https://github.com/ChernoSlava/contacts-keeper)
 4) [Fish gallery](https://github.com/ChernoSlava/fish-gallery)
-5) [Рефакторинг дипломного проекта Movies explorer](https://github.com/ChernoSlava/Movies-exlorer-refactor)
----
+5) [Refactoring of the Movies explorer graduation project](https://github.com/ChernoSlava/Movies-exlorer-refactor )
+
+### Projects using different technologies:
+
+1) [Digitals clock using SCSS/jQuery](https://github.com/ChernoSlava/Digital-Clock);
+2) [Films review using PUG/SCSS](https://github.com/ChernoSlava/Film-Review );
+3) [2d game on Vanila JavaScript/Canvas](https://github.com/ChernoSlava/Fluppy );
+4) [React/Next js burger website](https://github.com/ChernoSlava/Burgers-Next-JS ).
